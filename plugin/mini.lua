@@ -105,7 +105,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
 vim.api.nvim_create_autocmd({
   'BufEnter',
-  'BufModifiedSet',
+  'OptionSet',
   'WinEnter',
   'BufWritePost'
 }, {
