@@ -10,6 +10,7 @@ vim.pack.add({ 'https://github.com/akinsho/toggleterm.nvim' }, { confirm = false
 
 local tt = require('toggleterm')
 tt.setup({
+  shell = "/bin/bash", 
   open_mapping = { [[<c-\>]] },
 })
 
