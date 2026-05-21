@@ -11,6 +11,6 @@ vim.pack.add({ 'https://github.com/mason-org/mason-lspconfig.nvim' }, { confirm 
 
 require('mason').setup()
 require('mason-lspconfig').setup({
-  ensure_installed = { 'vtsls', 'vue_ls' },
+  ensure_installed = { 'vtsls', 'vue_ls', 'eslint', 'typos_lsp' },
 })
 

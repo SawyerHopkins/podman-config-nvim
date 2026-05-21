@@ -10,7 +10,16 @@ vim.pack.add({ 'https://github.com/akinsho/toggleterm.nvim' }, { confirm = false
 
 local tt = require('toggleterm')
 tt.setup({
+  shell = "/bin/bash",
+  direction = 'vertical',
   open_mapping = { [[<c-\>]] },
+  size = function(term)
+    if term.direction == "horizontal" then
+      return 15
+    elseif term.direction == "vertical" then
+      return vim.o.columns * 0.3
+    end
+  end
 })
 
 --[[ KEY BINDINGS --]]

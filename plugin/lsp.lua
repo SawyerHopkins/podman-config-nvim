@@ -10,12 +10,14 @@ vim.pack.add({ 'https://github.com/neovim/nvim-lspconfig' }, { confirm = false }
 
 vim.lsp.config('vue_ls', {
   init_options = {
-    languageFeatures = {
-      defaultTagNameCase = 'pascalCase',
-      defaultAttrNameCase = 'kebabCase',
-    },
     vue = {
       hybridMode = true
+    },
+    complete = {
+      casing = {
+        tags = 'pascal',
+        props = 'kebab'
+      }
     }
   }
 })
@@ -94,5 +96,54 @@ vim.lsp.config('vtsls', {
       existing_capabilities.semanticTokensProvider.full = true
     end
   end
+})
+
+vim.lsp.config('eslint', {
+  cmd = { 'vscode-eslint-language-server', '--stdio' },
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+    'vue'
+  },
+  root_markers = {
+    'eslint.config.js',
+    'eslint.config.mjs',
+    'eslint.config.cjs',
+    'eslint.config.ts',
+    '.eslintrc',
+    '.eslintrc.js',
+    '.eslintrc.cjs',
+    '.eslintrc.json',
+    'package.json',
+  },
+  settings = {
+    workingDirectory = { mode = 'auto' },
+  }
+})
+
+ vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client.name == 'eslint' then
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        buffer = args.buf,
+        command = 'LspEslintFixAll',
+      })
+    end
+  end,
+})
+
+vim.lsp.config('typos_lsp', {
+  filetypes = {
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+    'vue',
+    'markdown',
+    'html',
+  }
 })
 
