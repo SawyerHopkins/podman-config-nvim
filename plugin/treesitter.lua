@@ -35,7 +35,10 @@ nts.install({
   'typescript',
   'vue',
   'xml',
-  'yaml'
+  'yaml',
+  'lua',
+  'vim',
+  'vimdoc'
 })
 
 require('treesitter-context').setup({

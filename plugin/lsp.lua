@@ -13,10 +13,14 @@ vim.lsp.config('vue_ls', {
     vue = {
       hybridMode = true
     },
-    complete = {
-      casing = {
-        tags = 'pascal',
-        props = 'kebab'
+    settings = {
+      vue = {
+        complete = {
+          casing = {
+            tags = 'pascal',
+            props = 'kebab'
+          }
+        }
       }
     }
   }
@@ -147,3 +151,23 @@ vim.lsp.config('typos_lsp', {
   }
 })
 
+vim.lsp.config('html', {
+  filetypes = {
+    'vue',
+    'html'
+  }
+}) 
+
+vim.lsp.config('cssls', {
+  filetypes = {
+    'vue',
+    'html'
+  }
+})
+
+ vim.lsp.config('tailwindcss', {
+  filetypes = {
+    'vue',
+    'html'
+  }
+}) 
