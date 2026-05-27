@@ -5,6 +5,10 @@ vim.pack.add({ 'https://github.com/nvim-telescope/telescope.nvim' }, { confirm =
 
 local builtin = require('telescope.builtin')
 
+-- Do not accidentally undo when moving around page
+vim.keymap.set('n', '<S-k>', '<C-u>', { desc = 'Half page up', remap = true })
+vim.keymap.set('n', '<S-j>', '<C-d>', { desc = 'Half page down', remap = true })
+
 -- Move to window using the <ctrl> hjkl keys
 vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window', remap = true })
 vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window', remap = true })
@@ -16,17 +20,14 @@ vim.keymap.set({ 'x', 'n', 's' }, '<leader>fs', '<cmd>w<cr><esc>', { desc = 'Sav
 vim.keymap.set('n', '<leader>fg', '<cmd>NvimTreeFindFile<CR>', { desc = 'Expand to file' })
 vim.keymap.set('n', '<leader>fr', '<cmd>NvimTreeRefresh<CR>', { desc = 'Refresh explorer' })
 vim.keymap.set('n', '<leader>fe', '<cmd>NvimTreeToggle<CR>', { desc = 'File explorer' })
+vim.keymap.set("n", "<leader>fh", require("undotree").open, { desc = 'File history' })
 require('which-key').add({
   { '<leader>f', group = '[f]ile', icon = '' }
 })
 
--- [_]neovim keys
-vim.keymap.set("n", "<leader>_c", function()
-  require("oil").open(vim.fn.stdpath("config"))
-end, { desc = "Neovim config" })
-require('which-key').add({
-  { '<leader>_', group = '[_]neovim', icon = '' }
-})
+-- indentation
+vim.keymap.set('x', '<', '<gv')
+vim.keymap.set('x', '>', '>gv')
 
 -- [s]earch keys
 vim.keymap.set('n', '<leader>sac', builtin.autocommands, { desc = 'Search auto commands' })
@@ -55,9 +56,9 @@ vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Git commits' })
 vim.keymap.set('n', '<leader>gC', builtin.git_bcommits, { desc = 'Git buffer commits' })
 vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Git status' })
 vim.keymap.set('n', '<leader>gS', builtin.git_stash, { desc = 'Git stash' })
-vim.keymap.set('n', '<leader>gl', '<cmd>lua _lazygit_toggle()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>gl', '<cmd>lua _lazygit_toggle()<CR>', { remap = false })
 require('which-key').add({
-{ '<leader>g', group = '[g]it', icon = '' }
+  { '<leader>g', group = '[g]it', icon = '' }
 })
 
 -- [g]oto LSP key binds

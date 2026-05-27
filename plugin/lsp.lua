@@ -151,20 +151,6 @@ vim.lsp.config('typos_lsp', {
   }
 })
 
-vim.lsp.config('html', {
-  filetypes = {
-    'vue',
-    'html'
-  }
-}) 
-
-vim.lsp.config('cssls', {
-  filetypes = {
-    'vue',
-    'html'
-  }
-})
-
  vim.lsp.config('tailwindcss', {
   filetypes = {
     'vue',
