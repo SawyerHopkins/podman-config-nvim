@@ -19,5 +19,4 @@ vim.opt.relativenumber = true -- relative line numbers
 vim.opt.scrolloff = 4 -- rows of context
 vim.opt.sidescrolloff = 8 -- columns of context
 vim.opt.shiftround = true -- size indent
-vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 vim.opt.winminwidth = 5 -- Minimum window width

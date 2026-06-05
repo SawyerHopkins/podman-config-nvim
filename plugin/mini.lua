@@ -38,6 +38,8 @@ require('mini.basics').setup()
 
 -- Navigate between bracketed items (buffers, files, diagnostics, etc.)
 require('mini.bracketed').setup()
+vim.keymap.set('n', 'u', '<Nop>') -- Mini hijacks these and they need to be reset
+vim.keymap.set('n', '<C-R>', '<Nop>')
 
 -- Allow removing buffers without closing windows
 require('mini.bufremove').setup()
